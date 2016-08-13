@@ -1,0 +1,78 @@
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="../" class="navbar-brand">STS
+
+            </a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Themes</a>
+                </li>
+                <li>
+                    <a href="../help/">Help</a>
+                </li>
+                <li>
+                    <a href="http://news.bootswatch.com">Blog</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="javascript:void(0)">
+                        Logged in as:
+                        <span class="label label-primary">Kranthi Kumar</span>
+                    </a>
+                </li>
+                <li class="dropdown ">
+                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true">
+                        Options&nbsp;&nbsp;<i class="glyphicon glyphicon-cog"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="javascript:void(0)" [routerLink]="['Profile']">
+                                <i class="glyphicon glyphicon-user"></i>
+                                Profile
+                            </a>
+                        </li>
+                        <li><a href="javascript:void(0)"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
+                        <li><a href="javascript:void(0)"><i class="glyphicon glyphicon-lock"></i> Lock screen</a></li>
+                        <li><a href="javascript:void(0)"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="page-header" id="banner">
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <br/><br/>
+            <div class="list-group table-of-contents">
+                <a class="list-group-item " [class.active]="isActive(['Home'])" [routerLink]="['Home']">Home</a>
+                <a class="list-group-item" [class.active]="isActive(['Students'])" [routerLink]="['Students']">Students</a>
+                <a class="list-group-item " href="#typography">Buses</a>
+                <a class="list-group-item" href="#tables">Access Cards</a>
+                <a class="list-group-item" href="#forms">Reports</a>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+
+
+</div>
+
+

@@ -1,0 +1,128 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Profile</h3>
+    </div>
+    <div class="panel-body">
+
+        <tabs>
+            <tab [tabTitle]="'View'">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-4">
+                            <span class="well well-sm" style="width: 200px;">{{user?.name}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-4">
+                            <span class="well well-sm" style="width: 200px;">{{user?.email}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-4">
+                            <span class="well well-sm" >***********</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Role</label>
+                        <div class="col-sm-4">
+                            <span class="well well-sm" style="width: 200px;">{{user?.role}}</span>
+                        </div>
+                    </div>
+                </form>
+            </tab>
+            <tab tabTitle="Update">
+
+                <form [ngFormModel]="form" #updateProfileForm="ngForm" (ngSubmit)="onSubmit(updateProfileForm)">
+
+                    <div class="form-group row "
+                         [ngClass]="{ 'has-error' :  (submitted || name.touched ) &&( name.hasError('minlength')  || name.hasError('required')) }">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="name" placeholder="Name" ngControl="name">
+                        </div>
+
+                        <div style="color: sienna" role="alert" *ngIf="  (submitted || name.touched ) &&( name.hasError('minlength')  || name.hasError('required'))">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            Your name needs to be at least 8 characters.
+                        </div>
+                    </div>
+                    <div class="form-group row"
+                         [ngClass]="{ 'has-error' :  ( submitted || email.touched) &&( email.hasError('invalidEmailAddress')  || email.hasError('required')) }">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-4">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email" ngControl="email">
+                        </div>
+
+                        <div style="color: sienna" role="alert" *ngIf="  ( submitted || email.touched) &&( email.hasError('invalidEmailAddress')  || email.hasError('required'))">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            Your email needs to be valid.
+                        </div>
+                    </div>
+                    <div class="form-group row"
+                         [ngClass]="{ 'has-error' :  ( submitted ||  password.touched) &&( password.hasError('minlength')  || password.hasError('required')) }">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-4">
+                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password" ngControl="password">
+                        </div>
+                        <div style="color: sienna" role="alert"
+                             *ngIf="  ( submitted ||  password.touched) &&( password.hasError('minlength')  || password.hasError('required'))">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            Your password needs to be at least 8 characters.
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-1">
+                            <button type="submit" class="btn btn-primary" (click)="submitted=true" [disabled]="submit_request">
+                                Update
+                            </button>
+
+                        </div>
+
+
+                    </div>
+                    <div class="form-group row" *ngIf="submit_request">
+                        Submitting Request , please wait.....
+                        <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+
+                    </div>
+
+                    <div class="form-group row" *ngIf="submitted && !form.valid">
+
+                        <div class="offset-sm-2 col-sm-6">
+                            <div class="alert alert-danger">
+                                <strong>Heads Up!</strong>&nbsp;&nbsp;&nbsp;Please fill the form
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </tab>
+
+        </tabs>
+
+    </div>
+</div>
+
+
+
